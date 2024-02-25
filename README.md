@@ -1,2 +1,2 @@
 # recipe-organizer
-an app for exploring and sharing recipes
+an app for exploring and sharing recipes. The application is still on its initial phase. More info comming soon...
