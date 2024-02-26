@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const ImageUploaderModal = ({ recipeId, onClose }) => {
+    const navigate = useNavigate();
     const [image, setImage] = useState(null);
 
     // Handler for file input change
@@ -47,6 +49,7 @@ const ImageUploaderModal = ({ recipeId, onClose }) => {
 
             // Close the modal or navigate away
             onClose();
+            navigate(`/`);
         } catch (error) {
             // Log and handle errors
             console.error('Error uploading image:', error.message);

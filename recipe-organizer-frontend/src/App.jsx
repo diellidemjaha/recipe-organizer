@@ -35,7 +35,7 @@ function App() {
 
             <Route path="/recipeform" element={<RecipeForm />} />
             <Route path="/imageuploader" element={<ImageUploader />} />
-            <Route path="/recipedetails" element={<RecipeDetails />} />
+            <Route path="/recipe/:id" element={<RecipeDetails />} />
             <Route path="/updaterecipeform" element={<RecipeUpdateForm />} />
             <Route path="/searchrecipe" element={<SearchRecipeForm />} />
           </>

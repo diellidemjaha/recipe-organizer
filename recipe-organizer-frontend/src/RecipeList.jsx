@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
 
 const GET_RECIPES_QUERY = gql`
   query GetRecipes {
@@ -17,6 +18,7 @@ const GET_RECIPES_QUERY = gql`
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 const RecipeList = () => {
+  const navigate = useNavigate();
   const { loading, error, data } = useQuery(GET_RECIPES_QUERY);
 
   if (loading) {
@@ -46,6 +48,7 @@ const RecipeList = () => {
               <div className="mt-4">
                 <button
                   className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                  onClick={() => navigate(`/recipe/${recipe.id}`)}
                   // Handle click or navigate to recipe details page
                   // Example: onClick={() => handleRecipeDetails(recipe.id)}
                 >
