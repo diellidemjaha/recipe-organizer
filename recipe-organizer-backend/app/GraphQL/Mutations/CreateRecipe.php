@@ -18,13 +18,18 @@ final class CreateRecipe
                 throw new \Exception('User not authenticated.');
             }
 
+            // $imagePath = $args['input']['image_path'];
+
+            // Log the received image_path
+            // Log::info('Received image_path: ' . $imagePath);
+
             $recipe = Recipe::create([
                 'user_id' => $user->id,
                 'title' => $args['input']['title'],
                 'ingredients' => $args['input']['ingredients'],
                 'steps' => $args['input']['steps'],
                 'tags' => $args['input']['tags'],
-                'image_path' => $args['input']['image_path'],
+                // 'image_path' => $imagePath,
             ]);
 
             return $recipe;
@@ -32,8 +37,7 @@ final class CreateRecipe
             // Log or return the exception message for debugging
             Log::error($e->getMessage());
 
-            // Return a specific error message or null if needed
-            return null;
+            return ['error' => $e->getMessage()];
         }
     }
 }

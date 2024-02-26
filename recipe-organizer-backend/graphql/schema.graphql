@@ -46,7 +46,7 @@ type Recipe {
     title: String!
     ingredients: String!
     steps: String!
-    tags: String
+    tags: [String]
     image_path: String
     created_at: DateTime!
     updated_at: DateTime!
@@ -56,7 +56,7 @@ input CreateRecipeInput {
     title: String!
     ingredients: String!
     steps: String!
-    tags: String
+    tags: [String]
     image_path: String
 }
 
@@ -64,7 +64,7 @@ input UpdateRecipeInput {
     title: String
     ingredients: String
     steps: String
-    tags: String
+    tags: [String]
     image_path: String
 }
 

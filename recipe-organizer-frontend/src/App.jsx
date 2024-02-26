@@ -9,6 +9,7 @@ import RecipeUpdateForm from './UpdateRecipeForm';
 import { ApolloProvider } from '@apollo/client';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import SearchRecipeForm from './SearchRecipe';
+import ImageUploader from './ImageUploader';
 
 const client = new ApolloClient({
   uri: 'http://localhost:8000/graphql',
@@ -31,7 +32,9 @@ function App() {
         {/* Routes requiring authentication */}
         {loggedIn ? (
           <>
+
             <Route path="/recipeform" element={<RecipeForm />} />
+            <Route path="/imageuploader" element={<ImageUploader />} />
             <Route path="/recipedetails" element={<RecipeDetails />} />
             <Route path="/updaterecipeform" element={<RecipeUpdateForm />} />
             <Route path="/searchrecipe" element={<SearchRecipeForm />} />

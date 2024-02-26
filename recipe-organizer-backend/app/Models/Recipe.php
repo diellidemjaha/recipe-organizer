@@ -16,6 +16,10 @@ class Recipe extends Model
         'tags',
         'image_path',
     ];
+
+    protected $casts = [
+        'tags' => 'array',
+    ];
     public function user()
     {
         return $this->belongsTo(User::class);
