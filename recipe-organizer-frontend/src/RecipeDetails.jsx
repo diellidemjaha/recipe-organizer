@@ -36,11 +36,16 @@ const RecipeDetails = () => {
       <h1 className="text-3xl font-bold mb-4">{recipe.title}</h1>
       <p className="mb-2">Ingredients: {recipe.ingredients}</p>
       <p className="mb-2">Steps: {recipe.steps}</p>
-      <p className="mb-4">Tags: {recipe.tags}</p>
+      <p className="mb-2">Tags:</p>
+    <b><ul>
+      {recipe.tags.map((tag, index) => (
+        <li key={index}>{tag}</li>
+      ))}
+    </ul></b>
       
       {recipe.image_path && (
         <div>
-          <p className="mb-2">Image:</p>
+          {/* <p className="mb-2">Image:</p> */}
           <img 
           src={`${import.meta.env.VITE_API_BASE_URL}/storage/images/${recipe.image_path}`}
           alt={`Image for ${recipe.title}`} className="max-w-full rounded-md" />
