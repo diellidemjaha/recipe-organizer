@@ -94,6 +94,14 @@ const NavBar = ({ onSearch }) => {
             {userToken ?
                     <a
                         className="text-sm ml-4 text-neutral-500 hover:text-neutral-700 dark:text-neutral-200 dark:hover:text-neutral-400"
+                        href="/userrecipes"
+                    >
+                        My Recipe's
+                    </a>
+                    : "" }
+            {userToken ?
+                    <a
+                        className="text-sm ml-4 text-neutral-500 hover:text-neutral-700 dark:text-neutral-200 dark:hover:text-neutral-400"
                         href="/recipeform"
                     >
                         Add Recipe

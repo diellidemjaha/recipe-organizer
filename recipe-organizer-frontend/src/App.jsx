@@ -8,10 +8,12 @@ import RegisterComponent from './Register';
 import RecipeForm from './RecipeForm';
 import RecipeDetails from './RecipeDetails';
 import RecipeList from './RecipeList';
-import RecipeUpdateForm from './UpdateRecipeForm';
+// import RecipeUpdateForm from './UpdateRecipeForm';
 import SearchRecipeForm from './SearchRecipe';
 import { SEARCH_RECIPE } from './SearchQuery';
 import { GET_ALL_RECIPES_QUERY } from './GetAllRecipesQuery';
+import EditRecipeForm from './EditRecipeForm';
+import UserRecipeList from './UserRecipeList';
 
 const client = new ApolloClient({
   uri: 'http://localhost:8000/graphql',
@@ -39,12 +41,36 @@ function App() {
     }
   };
 
+  class ErrorBoundary extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = { hasError: false };
+    }
+  
+    static getDerivedStateFromError(error) {
+      return { hasError: true };
+    }
+  
+    componentDidCatch(error, errorInfo) {
+      console.error('Error in component:', error, errorInfo);
+    }
+  
+    render() {
+      if (this.state.hasError) {
+        return <p>Something went wrong. Please check the console for more information.</p>;
+      }
+  
+      return this.props.children;
+    }
+  }
+
   try {
-  return (
+    return (
       <ApolloProvider client={client}>
         <Router>
           <div>
             <NavBar onSearch={handleSearch} />
+              <ErrorBoundary>  
             <Routes>
               {/* Public route */}
               <Route path="/" element={<RecipeList />} />
@@ -55,12 +81,17 @@ function App() {
                   <Route path="/recipeform" element={<RecipeForm />} />
                   {/* <Route path="/imageuploader" element={<ImageUploader />} /> */}
                   <Route path="/recipe/:id" element={<RecipeDetails />} />
-                  <Route path="/updaterecipeform" element={<RecipeUpdateForm />} />
+                  {/* <Route path="/updaterecipeform" element={<RecipeUpdateForm />} /> */}
                   <Route path="/searchrecipe" element={<SearchRecipeForm />} />
-                  <Route path="/searchresults"  element={<SearchResults recipes={searchResults} />}/>
-                </>
-              ) : (
-                <>
+                  <Route path="/searchresults" element={<SearchResults recipes={searchResults} />} />
+
+                  <Route path="/userrecipes" element={<UserRecipeList />} />
+                  <Route
+                    path="/edit-recipe/:id"
+                    element={<EditRecipeForm />}
+                    />               </>
+                    ) : (
+                      <>
                   {/* Unauthenticated routes */}
                   <Route path="/login" element={<LoginComponent />} />
                   <Route path="/register" element={<RegisterComponent />} />
@@ -70,9 +101,10 @@ function App() {
                 </>
               )}
             </Routes>
+              </ErrorBoundary>
           </div>
         </Router>
-        </ApolloProvider>
+      </ApolloProvider>
     );
   } catch (error) {
     console.error('Error during rendering App component:', error);
