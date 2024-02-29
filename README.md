@@ -1,5 +1,15 @@
 # Recipe Sharing App
 
+![Example Screenshot](recipe-screenshot-1.jpg)
+
+![Example Screenshot](recipe-screenshot-2.jpg)
+
+![Example Screenshot](recipe-screenshot-3.jpg)
+
+![Example Screenshot](recipe-screenshot-4.jpg)
+
+![Example Screenshot](recipe-screenshot-5.jpg)
+
 Welcome to the Recipe Sharing App! This web application allows authenticated users to share their favorite recipes with the community. It is built using Laravel, React, MySQL, GraphQL API, and Tailwind CSS.
 
 ## Features
