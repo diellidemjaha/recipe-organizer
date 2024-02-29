@@ -9,9 +9,11 @@ final readonly class SearchRecipe
     public function __invoke(null $_, array $args)
     {
       // Extract the title from the arguments
-      $title = $args['title'] ?? '';
+      $searchTerm = $args['title'] ?? '';
 
       // Use the extracted title in the query
-      return Recipe::where('title', 'like', '%' . $title . '%')->get();
-    }
+      return Recipe::where('title', 'like', '%' . $searchTerm . '%')
+          // ->with('user') // Eager load the user relationship
+          ->get();
+  }
 }

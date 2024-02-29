@@ -11,6 +11,10 @@ const GET_RECIPES_QUERY = gql`
       steps
       tags
       image_path
+      user {
+        id
+        name
+      }
     }
   }
 `;
@@ -46,6 +50,9 @@ const RecipeList = () => {
               <h2 className="text-xl font-semibold mb-2">{recipe.title}</h2>
               <p className="text-gray-700">{recipe.ingredients}</p>
               <div className="mt-4">
+                  <p className="text-blue-500 cursor-pointer" onClick={() => navigate(`/user-recipes/${recipe.user.id}`)}>
+                  Posted by: {recipe.user.name}
+                </p>
                 <button
                   className="bg-blue-500 text-white px-4 py-2 rounded-md"
                   onClick={() => navigate(`/recipe/${recipe.id}`)}

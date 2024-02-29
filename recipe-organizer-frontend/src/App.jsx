@@ -14,6 +14,7 @@ import { SEARCH_RECIPE } from './SearchQuery';
 import { GET_ALL_RECIPES_QUERY } from './GetAllRecipesQuery';
 import EditRecipeForm from './EditRecipeForm';
 import UserRecipeList from './UserRecipeList';
+import UserProfile from './UserProfile';
 
 const client = new ApolloClient({
   uri: 'http://localhost:8000/graphql',
@@ -84,7 +85,7 @@ function App() {
                   {/* <Route path="/updaterecipeform" element={<RecipeUpdateForm />} /> */}
                   <Route path="/searchrecipe" element={<SearchRecipeForm />} />
                   <Route path="/searchresults" element={<SearchResults recipes={searchResults} />} />
-
+                  <Route path="/user-recipes/:id" element={<UserProfile />} />
                   <Route path="/userrecipes" element={<UserRecipeList />} />
                   <Route
                     path="/edit-recipe/:id"

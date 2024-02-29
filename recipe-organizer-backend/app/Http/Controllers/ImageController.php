@@ -14,7 +14,7 @@ class ImageController extends Controller
     public function upload(Request $request, $recipeId)
 {
     $request->validate([
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:20480',
     ]);
 
     $user_id = auth('sanctum')->id(); // Assuming you are using authentication

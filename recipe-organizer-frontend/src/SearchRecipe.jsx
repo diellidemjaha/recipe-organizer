@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import { useMutation, gql } from '@apollo/client';
+import { useQuery, gql } from '@apollo/client';
 
-const SEARCH_RECIPE_MUTATION = gql`
-  mutation SearchRecipe($input: SearchRecipeInput!) {
-    searchRecipe(input: $input) {
+const SEARCH_RECIPE_QUERY = gql`
+  query SearchRecipe($title: String!) {
+    searchRecipe(title: $title) {
       id
       title
       ingredients
       steps
       tags
       image_path
+      user {
+        id
+        name
+      }
     }
   }
 `;
@@ -17,35 +21,20 @@ const SEARCH_RECIPE_MUTATION = gql`
 const SearchRecipeForm = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const [searchRecipeMutation] = useMutation(SEARCH_RECIPE_MUTATION);
+  const { loading, error, data, refetch } = useQuery(SEARCH_RECIPE_QUERY, {
+    variables: { title: searchTerm },
+    fetchPolicy: 'network-only',
+  });
+  refetch();
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
-
-    try {
-      const { data } = await searchRecipeMutation({
-        variables: {
-          input: {
-            searchTerm,
-          },
-        },
-      });
-
-      // Assuming searchRecipe mutation returns the search results
-      const searchResults = data.searchRecipe;
-
-      onSearch(searchResults);
-
-      // Clear form field or handle submission as needed
-      setSearchTerm('');
-    } catch (error) {
-      console.error(error);
-      // Handle search error
+  const handleSearch = () => {
+    if (!loading && !error) {
+      onSearch(data?.searchRecipe || []);
     }
   };
 
   return (
-    <form onSubmit={handleSearch}>
+    <form onSubmit={(e) => { e.preventDefault(); handleSearch(); }}>
       <label>
         Search Term:
         <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />

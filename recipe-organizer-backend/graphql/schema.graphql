@@ -50,6 +50,7 @@ type Recipe {
     image_path: String
     created_at: DateTime!
     updated_at: DateTime!
+    user: User
 }
 
 input CreateRecipeInput {
@@ -87,9 +88,10 @@ type LoginResponse {
 
 type Query {
     getRecipes: [Recipe!]!
-      getUserRecipes: [Recipe!]!
+    getUserRecipes: [Recipe!]!
     getRecipe(id: ID!): Recipe
-     searchRecipe(title: String!): [Recipe!]!
+    searchRecipe(title: String!): [Recipe!]!
+    getUserProfileRecipes(userId: ID!): [Recipe!]!
 }
 
 type Mutation {

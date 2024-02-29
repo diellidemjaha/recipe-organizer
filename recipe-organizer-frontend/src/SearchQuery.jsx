@@ -11,6 +11,10 @@ export const SEARCH_RECIPE = gql`
       image_path
       created_at
       updated_at
+      user {
+        id
+        name
+      }
     }
   }
 `;
