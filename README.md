@@ -2,8 +2,6 @@
 
 ![Example Screenshot](recipe-org-screenshot-final.jpg)
 
-![Example Screenshot](recipe-screenshot-2.jpg)
-
 ![Example Screenshot](recipe-screenshot-3.jpg)
 
 ![Example Screenshot](recipe-screenshot-4.jpg)
