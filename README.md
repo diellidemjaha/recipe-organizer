@@ -1,6 +1,6 @@
 # Recipe Sharing App
 
-![Example Screenshot](recipe-screenshot-final.jpg)
+![Example Screenshot](recipe-org-screenshot-final.jpg)
 
 ![Example Screenshot](recipe-screenshot-2.jpg)
 
