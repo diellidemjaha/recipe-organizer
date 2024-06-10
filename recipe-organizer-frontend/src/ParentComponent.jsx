@@ -1,10 +1,10 @@
 // ParentComponent.jsx
 
 import React, { useState } from 'react';
-import NavBar from './NavBar'; // Update the path based on your project structure
-import SearchResults from './SearchResults'; // Update the path based on your project structure
+import NavBar from './NavBar';
+import SearchResults from './SearchResults'; 
 import { useLazyQuery } from '@apollo/client';
-import { SEARCH_RECIPE } from './SearchQuery'; // Import your GraphQL query
+import { SEARCH_RECIPE } from './SearchQuery'; 
 
 const ParentComponent = () => {
   const [searchTerm, setSearchTerm] = useState('');
