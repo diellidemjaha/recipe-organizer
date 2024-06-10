@@ -56,8 +56,6 @@ const RecipeList = () => {
                 <button
                   className="bg-blue-500 text-white px-4 py-2 rounded-md"
                   onClick={() => navigate(`/recipe/${recipe.id}`)}
-                  // Handle click or navigate to recipe details page
-                  // Example: onClick={() => handleRecipeDetails(recipe.id)}
                 >
                   View Details
                 </button>
