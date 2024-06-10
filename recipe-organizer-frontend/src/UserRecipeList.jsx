@@ -93,11 +93,9 @@ export const DELETE_RECIPE_MUTATION = gql`
   const handleDelete = async (recipeId) => {
     try {
       await handleDeleteRecipe(recipeId, deleteRecipeMutation);
-      // Optionally, you can refresh the recipe list or perform other actions after deletion
       refetch();
     } catch (error) {
       console.error('Error deleting recipe:', error);
-      // Handle the error, you might want to show a message to the user or perform other actions
     }
   };
 
