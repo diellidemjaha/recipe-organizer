@@ -47,10 +47,6 @@ const RegisterComponent = ({ onRegister }) => {
       if (data.register) {
         const { token, user } = data.register;
 
-        // Store the token in local storage
-        // localStorage.setItem('token', token);
-        // localStorage.setItem('user_id', user.id);
-        // console.log('Token stored in local storage:', token);
         console.log('user registered succesfully', user);
 
         window.location.href = '/login';
